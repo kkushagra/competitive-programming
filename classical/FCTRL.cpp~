@@ -10,7 +10,7 @@ int main()
 	{
 		ll count=0,n,mul=5;
 		cin>>n;
-		while((n/mul) > 0)
+		while(n % mul > 0)
 		{
 			count = count + (n/mul);
 			mul*=5;

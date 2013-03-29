@@ -1,5 +1,5 @@
 #include<iostream>
-
+#define ll long long
 using namespace std;
 
 int main()
@@ -8,14 +8,32 @@ int main()
 	cin>>t;
 	while(t--)
 	{
-		long long int fact=1;
-		int n;
+		int fact[200];
+		int n,len;
+		ll prod;
 		cin>>n;
-		for(int i=1;i<=n;i++)
+		fact[0]=1;
+		len =0;
+
+		for(;n>=2;n--)
 		{
-			fact=fact*i;
+			prod = 0;
+			for(int k = 0;k<=len;k++)
+			{
+				prod = (fact[k]*n) + prod;
+				fact[k]=prod % 10;
+				prod = prod/10;
+			}
+			while(prod>0)
+			{
+				fact[++len]= prod % 10;
+				prod=prod/10;
+			}
+		
 		}
-		cout<<fact<<endl;
+		for(int i=len;i>=0;i--)
+			cout<<fact[i];
+		cout<<endl;
 	}
 	return 0;
 }
